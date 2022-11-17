@@ -2,7 +2,6 @@ FROM php:7.4-fpm
 
 RUN docker-php-ext-install pdo pdo_mysql
 
-
 RUN apt-get update
 
 # Install useful tools
@@ -43,6 +42,9 @@ RUN docker-php-ext-install \
     bz2 \
     zip \
     intl
+
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Install Postgre PDO
 RUN apt-get install -y libpq-dev \
