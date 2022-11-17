@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('api_fe/list_employee', '\App\Http\Controllers\Employee\EmployeeController@index');
 Route::post('employee', '\App\Http\Controllers\Employee\EmployeeController@store');
+
+Route::post('upload', '\App\Http\Controllers\Upload\UploadController@store');

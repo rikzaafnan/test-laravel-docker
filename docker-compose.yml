@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+
+ # Web Server Service
+  nginx:
+    container_name: nginx-1
+    image: nginx:alpine
+    ports:
+    #contoh port 85 itu dari nginx config.
+    #contoh port 38989 itu yg diakses di web
+      - "38989:85"
+    depends_on:
+      - app
+    volumes:
+      - ./src:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+
+ # Application Service
+  app:
+    container_name: laravel-publis-app
+    build: 
+      context: ./php
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/var/www
+      # - ./src/storage:$(pwd)/storage
+    # ports:
+    #   - "9000:9000"
+    working_dir: /var/www
