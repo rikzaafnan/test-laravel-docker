@@ -28,4 +28,4 @@ services:
     # ports:
     #   - "9000:9000"
     working_dir: /var/www
-    command: bash -c "composer update"
+    command: bash -c "composer install"
